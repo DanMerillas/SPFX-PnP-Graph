@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-pn-p-graph-client-side-solution",
+    "id": "903fc8b2-eace-4ebd-afb5-defad54c6050",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.3"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-pn-p-graph description"
+      },
+      "longDescription": {
+        "default": "spfx-pn-p-graph description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-pn-p-graph Feature",
+        "description": "The feature that activates elements of the spfx-pn-p-graph solution.",
+        "id": "d8e0ee53-6050-4d7c-b972-92c624054adf",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-pn-p-graph.sppkg"
+  }
+}
