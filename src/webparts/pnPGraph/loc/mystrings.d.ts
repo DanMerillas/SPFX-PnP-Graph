@@ -1,4 +1,4 @@
-declare interface IPnPGraphWebPartStrings {
+declare interface IPnpGraphWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
@@ -12,7 +12,7 @@ declare interface IPnPGraphWebPartStrings {
   AppOutlookEnvironment: string;
 }
 
-declare module 'PnPGraphWebPartStrings' {
-  const strings: IPnPGraphWebPartStrings;
+declare module 'PnpGraphWebPartStrings' {
+  const strings: IPnpGraphWebPartStrings;
   export = strings;
 }

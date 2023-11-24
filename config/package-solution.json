@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "spfx-pn-p-graph-client-side-solution",
-    "id": "903fc8b2-eace-4ebd-afb5-defad54c6050",
+    "id": "e48b554b-5c64-42c4-b702-213b3e4fba3d",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
@@ -29,7 +29,7 @@
       {
         "title": "spfx-pn-p-graph Feature",
         "description": "The feature that activates elements of the spfx-pn-p-graph solution.",
-        "id": "d8e0ee53-6050-4d7c-b972-92c624054adf",
+        "id": "3adfbb49-6942-44af-b1e8-02600c215a29",
         "version": "1.0.0.0"
       }
     ]

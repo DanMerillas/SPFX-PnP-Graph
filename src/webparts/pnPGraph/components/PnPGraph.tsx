@@ -1,43 +1,70 @@
-import * as React from 'react';
-import styles from './PnPGraph.module.scss';
-import { IPnPGraphProps } from './IPnPGraphProps';
-import { escape } from '@microsoft/sp-lodash-subset';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-export default class PnPGraph extends React.Component<IPnPGraphProps, {}> {
-  public render(): React.ReactElement<IPnPGraphProps> {
-    const {
-      description,
-      isDarkTheme,
-      environmentMessage,
-      hasTeamsContext,
-      userDisplayName
-    } = this.props;
+import { SPFx, graphfi } from "@pnp/graph";
 
-    return (
-      <section className={`${styles.pnPGraph} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Well done, {escape(userDisplayName)}!</h2>
-          <div>{environmentMessage}</div>
-          <div>Web part property value: <strong>{escape(description)}</strong></div>
-        </div>
-        <div>
-          <h3>Welcome to SharePoint Framework!</h3>
-          <p>
-            The SharePoint Framework (SPFx) is a extensibility model for Microsoft Viva, Microsoft Teams and SharePoint. It&#39;s the easiest way to extend Microsoft 365 with automatic Single Sign On, automatic hosting and industry standard tooling.
-          </p>
-          <h4>Learn more about SPFx development:</h4>
-          <ul className={styles.links}>
-            <li><a href="https://aka.ms/spfx" target="_blank" rel="noreferrer">SharePoint Framework Overview</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-graph" target="_blank" rel="noreferrer">Use Microsoft Graph in your solution</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-teams" target="_blank" rel="noreferrer">Build for Microsoft Teams using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-viva" target="_blank" rel="noreferrer">Build for Microsoft Viva Connections using SharePoint Framework</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-store" target="_blank" rel="noreferrer">Publish SharePoint Framework applications to the marketplace</a></li>
-            <li><a href="https://aka.ms/spfx-yeoman-api" target="_blank" rel="noreferrer">SharePoint Framework API reference</a></li>
-            <li><a href="https://aka.ms/m365pnp" target="_blank" rel="noreferrer">Microsoft 365 Developer Community</a></li>
-          </ul>
-        </div>
-      </section>
-    );
+import * as React from "react";
+import { useEffect, useState } from "react";
+import "@pnp/graph/users";
+import "@pnp/graph/messages";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import { TabPanel } from './TabComponent';
+import Tasks from "./Tasks";
+import Email from "./Email";
+import Events from "./Events";
+import Files from "./Files";
+
+
+export default function PnpGraph(props: { context: any }) {
+
+  const [graph, setGraph] = useState<any>(undefined);
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    const graph = graphfi().using(SPFx(props.context));
+    setGraph(graph);
+  }, []);
+
+  function handleChange(event: React.SyntheticEvent, newValue: number): void {
+    setValue(newValue);
   }
+
+  function a11yProps(index: number) {
+    return {
+      id: `simple-tab-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
+    };
+  }
+
+
+  return (
+    <>
+      {graph && <section className="todayWork"><Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange.bind(this)} aria-label="basic tabs example">
+          <Tab className={"labels"} label="Tareas" {...a11yProps(0)} />
+          <Tab className={"labels"} label="Correos" {...a11yProps(1)} />
+          <Tab className={"labels"} label="Reuniones" {...a11yProps(2)} />
+          <Tab className={"labels"} label="Ficheros" {...a11yProps(3)} />
+        </Tabs>
+      </Box>
+
+        <TabPanel value={value} index={0}>
+          <Tasks graph={graph} />
+        </TabPanel>
+
+        <TabPanel value={value} index={1}>
+          <Email graph={graph} />
+        </TabPanel>
+
+        <TabPanel value={value} index={2}>
+          <Events graph={graph} />
+        </TabPanel>
+        <TabPanel value={value} index={3}>
+          <Files graph={graph} />
+        </TabPanel> </section>}
+    </>
+  );
 }
+

@@ -1,0 +1,44 @@
+
+
+.mailContainer{
+    border: solid 1px #ccc;
+    margin-bottom: 10px;
+    
+    
+}
+
+.mailTitle{
+    cursor: pointer;
+    text-align: center;
+}
+.mailBody{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+.mailDate{
+    
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #686464;
+}
+
+
+
+.todayWork {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #a9a9a90f]";
+  color: var(--bodyText);
+  min-height: 410px;
+  background-color: #a9a9a924;
+  font-size: 14px;
+}
+
+.loading{
+  text-align: center;
+  display:block
+}
+
+.labels{
+  font-weight: bold;
+}
