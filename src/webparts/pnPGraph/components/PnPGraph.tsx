@@ -42,7 +42,9 @@ export default function PnpGraph(props: { context: any }) {
   return (
     <>
       {graph && <section className="todayWork"><Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange.bind(this)} aria-label="basic tabs example">
+        <Tabs value={value} TabIndicatorProps={{ sx: { display: 'none' } }} sx={{'& .MuiTabs-flexContainer': {flexWrap: 'wrap',},}} onChange={handleChange.bind(this)}
+
+        >
           <Tab className={"labels"} label="Tareas" {...a11yProps(0)} />
           <Tab className={"labels"} label="Correos" {...a11yProps(1)} />
           <Tab className={"labels"} label="Reuniones" {...a11yProps(2)} />

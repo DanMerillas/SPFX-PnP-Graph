@@ -1,15 +1,12 @@
 
 
 .mailContainer{
-    border: solid 1px #ccc;
     margin-bottom: 10px;
-    
-    
 }
 
 .mailTitle{
     cursor: pointer;
-    text-align: center;
+   
 }
 .mailBody{
     margin-left: 10px;
@@ -22,7 +19,9 @@
     color: #686464;
 }
 
-
+.css-hswfci-MuiPaper-root-MuiCard-root{
+  border: solid 1px #141414 !important;
+}
 
 .todayWork {
   overflow: hidden;
@@ -30,7 +29,6 @@
   color: "[theme:bodyText, default: #a9a9a90f]";
   color: var(--bodyText);
   min-height: 410px;
-  background-color: #a9a9a924;
   font-size: 14px;
 }
 
@@ -41,4 +39,13 @@
 
 .labels{
   font-weight: bold;
+}
+
+.MuiSvgIcon-root{
+  font-size: 1.0rem !important;
+}
+
+.MuiTab-textColorPrimary
+{
+  font-weight: bold !important;
 }
